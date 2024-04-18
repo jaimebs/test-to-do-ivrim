@@ -1,6 +1,6 @@
 import { createTaskDto } from "../../dtos/task/create-task.dto";
 import { taskEntity } from "../../entities/task/task.entity";
-import { ITaskRepository } from "../../interfaces/task/task.interface";
+import { ITaskRepository } from "../../interfaces/task/task-repository.interface";
 import { taskModel } from "../../models/task/task.model";
 
 export class TaskRepository implements ITaskRepository {
