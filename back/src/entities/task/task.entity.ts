@@ -3,5 +3,5 @@ export interface taskEntity {
   title: string;
   description: string;
   status: string;
-  createdAt: Date;
+  createdAt?: Date;
 }

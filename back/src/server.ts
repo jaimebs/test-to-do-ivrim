@@ -1,10 +1,12 @@
 import "dotenv/config";
 import express from "express";
 import { connectMongoDb } from "./infra/mongo/connect";
+import taskRoutes from "./routers/task.router";
 
 const app = express();
 
 app.use(express.json());
+app.use(taskRoutes);
 
 connectMongoDb(process.env.MONGO_DB_URL as string)
   .then(() => console.log("MongoDb conectado"))

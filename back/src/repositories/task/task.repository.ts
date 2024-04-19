@@ -4,10 +4,8 @@ import { ITaskRepository } from "../../interfaces/task/task-repository.interface
 import { taskModel } from "../../models/task/task.model";
 
 export class TaskRepository implements ITaskRepository {
-  constructor(private readonly _taskModel: typeof taskModel) {}
-
   async create(task: createTaskDto): Promise<taskEntity> {
-    const createTask = await this._taskModel.create(task);
+    const createTask = await taskModel.create(task);
 
     const updatedTaskWithIdAsString: taskEntity = {
       ...createTask!.toObject(),
@@ -18,11 +16,11 @@ export class TaskRepository implements ITaskRepository {
   }
 
   async findByStatus(status: string): Promise<taskEntity[]> {
-    return await this._taskModel.find({ status: status });
+    return await taskModel.find({ status: status });
   }
 
   async update(id: string, task: taskEntity): Promise<taskEntity> {
-    const updatedTask = await this._taskModel.findOneAndUpdate(
+    const updatedTask = await taskModel.findOneAndUpdate(
       { _id: id },
       { $set: task },
       { new: true }
@@ -36,6 +34,6 @@ export class TaskRepository implements ITaskRepository {
     return updatedTaskWithIdAsString;
   }
   async delete(id: string): Promise<void> {
-    await this._taskModel.findByIdAndDelete({ _id: id });
+    await taskModel.findByIdAndDelete({ _id: id });
   }
 }
