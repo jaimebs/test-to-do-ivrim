@@ -33,19 +33,19 @@ O projeto será executado na porta 3333.
 
 Aqui estão os endpoints disponíveis para testar o CRUD de tarefas:
 
-**GET:** http://localhost:3333/tasks
+**GET:** `http://localhost:3333/tasks`
 
 Retorna todas as tarefas cadastradas.
 
-**POST:** http://localhost:3333/tasks
+**POST:** `http://localhost:3333/tasks`
 
 Cria uma nova tarefa. Envie os dados da tarefa no corpo da solicitação.
 
-**PUT:** http://localhost:3333/tasks?status=A%20Fazer
+**PUT:** `http://localhost:3333/tasks?status=A Fazer`
 
 Atualiza s tarefa com o status "A Fazer". Substitua "A Fazer" pelo status desejado.
 
-**DELETE:** http://localhost:3333/tasks/:id
+**DELETE:** `http://localhost:3333/tasks/:id`
 
 Deleta a tarefa com o ID fornecido. Substitua ":id" pelo ID numérico da tarefa a ser excluída.
 
@@ -73,7 +73,7 @@ Após a instalação das dependências, execute o seguinte comando no terminal:
 npm run dev
 ```
 
-O projeto front-end será executado e estará disponível na seguinte URL: [http://localhost:5173/](http://localhost:5173/).
+O projeto front-end será executado e estará disponível na seguinte URL: `http://localhost:5173/`.
 
 ## Uso do Kanban de Tarefas
 
