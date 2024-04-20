@@ -1,10 +1,12 @@
 import "dotenv/config";
 import express from "express";
+import cors from "cors";
 import { connectMongoDb } from "./infra/mongo/connect";
 import taskRoutes from "./routers/task.router";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(taskRoutes);
 
