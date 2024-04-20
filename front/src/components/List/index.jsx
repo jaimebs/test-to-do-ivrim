@@ -1,11 +1,11 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import { MdAdd } from "react-icons/md";
 
-import { MdAdd } from 'react-icons/md';
+import Card from "../Card";
+import Fake from "../Card/fake";
 
-import Card from '../Card';
-import Fake from '../Card/fake';
-
-import { Container } from './styles';
+import { Container } from "./styles";
 
 export default function List({ data, index: listIndex }) {
   return (
@@ -19,20 +19,22 @@ export default function List({ data, index: listIndex }) {
         )}
       </header>
 
-      <ul style={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-      }}>
+      <ul
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+        }}
+      >
         {data.cards.map((card, index) => (
-          <Card 
-            key={card.id} 
+          <Card
+            key={card._id}
             listIndex={listIndex}
-            index={index} 
+            index={index}
             data={card}
           />
         ))}
-        <Fake index={data.cards.length} listIndex={listIndex}/>
+        <Fake index={data.cards.length} listIndex={listIndex} />
       </ul>
     </Container>
   );

@@ -1,24 +1,25 @@
-import React, { useRef, useContext } from 'react';
-import { useDrag, useDrop } from 'react-dnd';
+import React, { useRef, useContext } from "react";
+import { useDrag, useDrop } from "react-dnd";
 
-import BoardContext from '../Board/context';
+import BoardContext from "../Board/context";
 
 export default function Fake({ index, listIndex }) {
   const ref = useRef();
   const { move } = useContext(BoardContext);
 
   const [, dropRef] = useDrop({
-    accept: 'CARD',
+    accept: "CARD",
     hover(item, monitor) {
-      console.log(item, monitor, listIndex);
-
       const draggedListIndex = item.listIndex;
       const targetListIndex = listIndex;
 
       const draggedIndex = item.index;
       const targetIndex = index;
 
-      if (draggedIndex === targetIndex && draggedListIndex === targetListIndex) {
+      if (
+        draggedIndex === targetIndex &&
+        draggedListIndex === targetListIndex
+      ) {
         return;
       }
 
@@ -40,12 +41,10 @@ export default function Fake({ index, listIndex }) {
 
       item.index = targetIndex;
       item.listIndex = targetListIndex;
-    }
-  })
+    },
+  });
 
   dropRef(ref);
 
-  return (
-    <div style={{ flex: 1 }} ref={ref}></div>
-  );
+  return <div style={{ flex: 1 }} ref={ref}></div>;
 }
