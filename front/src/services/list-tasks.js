@@ -1,4 +1,4 @@
-import { list } from "./api";
+import { list } from "./task";
 
 export async function loadLists() {
   const [toDo, inProgress, done] = await Promise.all([

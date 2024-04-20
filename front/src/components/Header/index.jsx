@@ -1,11 +1,9 @@
-import React from 'react';
-
-import { Container } from './styles';
+import { Container } from "./styles";
 
 export default function Header() {
   return (
     <Container>
-      <h1>To-Ivrim</h1>
+      <h1>Kanban Ivrim</h1>
     </Container>
   );
 }

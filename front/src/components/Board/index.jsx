@@ -9,7 +9,7 @@ import List from "../List";
 
 import { Container } from "./styles";
 import { loadLists } from "../../services/list-tasks";
-import { update } from "../../services/api";
+import { update } from "../../services/task";
 import { getStatusMove } from "../../utils/get-status-move";
 
 export default function Board() {

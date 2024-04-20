@@ -8,7 +8,7 @@ import { IoTrashBinSharp } from "react-icons/io5";
 
 import { Container, Label } from "./styles";
 
-import { deleteTask } from "../../services/api";
+import { deleteTask } from "../../services/task";
 
 export default function Card({ data, index, listIndex }) {
   const ref = useRef();
