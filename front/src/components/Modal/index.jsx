@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { ModalContainer, CustomStyle, CustomCloseButton } from "./styles";
-import { create } from "../../services/task";
+import { create, update } from "../../services/task";
 
-export default function ModalTask({ openModal, closeModal }) {
+export default function ModalTask({ openModal, closeModal, task }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("A Fazer");
@@ -15,14 +15,23 @@ export default function ModalTask({ openModal, closeModal }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const task = {
+    const newTask = {
       title,
       description,
       status,
     };
-    await create(task);
+
+    task?._id ? await update(task?._id, newTask) : await create(newTask);
     window.location.reload();
   }
+
+  useEffect(() => {
+    if (task) {
+      setTitle(task.title);
+      setDescription(task.description);
+      setStatus(task.status);
+    }
+  }, [task]);
 
   return (
     <Modal
@@ -35,7 +44,7 @@ export default function ModalTask({ openModal, closeModal }) {
         <button onClick={onRequestClose} style={CustomCloseButton}>
           X
         </button>
-        <h2>Adicionar uma Tarefa</h2>
+        <h2>{task?._id ? "Editar" : "Adicionar"} uma tarefa</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="title">Título:</label>
@@ -69,7 +78,7 @@ export default function ModalTask({ openModal, closeModal }) {
               <option value="Concluído">Concluído</option>
             </select>
           </div>
-          <button type="submit">Adicionar</button>
+          <button type="submit">{task?._id ? "Editar" : "Adicionar"}</button>
         </form>
       </ModalContainer>
     </Modal>

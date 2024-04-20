@@ -33,9 +33,9 @@ export default function Board() {
       produce(lists, (draft) => {
         const dragged = draft[fromList].cards[from];
         if (dragged._id) {
-          draft[fromList].cards.splice(from, 1);
-          draft[toList].cards.splice(to, 0, dragged);
           const statusMove = getStatusMove(toList);
+          draft[fromList].cards.splice(from, 1);
+          draft[toList].cards.splice(to, 0, { ...dragged, status: statusMove });
           const task = { ...dragged, status: statusMove };
           update(task._id, task).then();
         }

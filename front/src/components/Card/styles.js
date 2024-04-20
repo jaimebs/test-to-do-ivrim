@@ -16,10 +16,16 @@ export const Container = styled.div`
     top: -31px;
     left: 15px;
 
-    svg {
+    #btn-delete {
       position: absolute;
       cursor: pointer;
       left: 247px;
+    }
+
+    #btn-edit {
+      position: absolute;
+      cursor: pointer;
+      left: 220px;
     }
   }
 
