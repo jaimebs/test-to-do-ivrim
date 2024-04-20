@@ -1,21 +1,39 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { useState } from "react";
 import { MdAdd } from "react-icons/md";
 
 import Card from "../Card";
 import Fake from "../Card/fake";
 
 import { Container } from "./styles";
+import ModalTask from "../Modal";
 
 export default function List({ data, index: listIndex }) {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function handleOpenModal() {
+    setIsOpen(true);
+  }
+
+  function handleCloseModal() {
+    setIsOpen(false);
+  }
+
   return (
     <Container done={data.done}>
       <header>
         <h2>{data.title}</h2>
         {data.creatable && (
-          <button type="button">
-            <MdAdd size={24} color="#FFF" />
-          </button>
+          <>
+            <button type="button" onClick={handleOpenModal}>
+              <MdAdd size={24} color="#FFF" />
+            </button>
+            <ModalTask
+              openModal={modalIsOpen}
+              closeModal={handleCloseModal}
+            ></ModalTask>
+          </>
         )}
       </header>
 
